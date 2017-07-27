@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+  </head>
+  <body>
+    <ul>
+      <form>
+        <div>
+        <p>{{listName}}</p>
+        <input type="text" name="item" value="" placeholder="Add Item">
+        <ul>
+        {{#list}}
+        <li>
+          <input type="checkbox" href="/todo/{{item}}">
+          <label>{{item}}</label>
+        </li>
+        {{/list}}
+      </ul>
+      </form>
+    </ul>
+  </body>
+</html>
