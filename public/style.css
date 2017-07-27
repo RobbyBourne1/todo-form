@@ -3,6 +3,14 @@ ul {
   padding: 0;
 }
 
+input {
+  margin: .5em;
+}
+
+.addItem {
+  width: 20em;
+}
+
 form {
   display: flex;
   flex-flow: column;

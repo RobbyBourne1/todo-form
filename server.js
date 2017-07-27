@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
-// app.use(expressValidator())
+app.use(expressValidator())
 
 const todos = {
   listName: 'TODO List',
@@ -27,13 +27,17 @@ const todos = {
   ]
 }
 
-app.get('/', (required, response) => {
+app.get('/', (request, response) => {
   response.render('index', todos)
 })
 
-app.post('/' (required, response) => {
-  
+app.post('/', (request, response) => {
+  request.checkBody('item', 'No Items Added')
+  todos.list.push({ item: request.body.item })
+  response.render('index', todos)
 })
+
+console.log(todos)
 
 app.listen(3000, () => {
   console.log('Things are Happening')
