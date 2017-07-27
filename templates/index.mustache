@@ -11,13 +11,16 @@
         <div>
         <p>{{listName}}</p>
         <input class="addItem" type="text" name="item" value="" placeholder="Add Item">
+      </form>
         <ul>
+          <form>
         {{#list}}
         <li>
-          <input type="checkbox" href="/todo/{{item}}">
+          <input type="submit" href="/{{item}}">
           <label>{{item}}</label>
         </li>
         {{/list}}
+      </form>
       </ul>
       </form>
     </ul>

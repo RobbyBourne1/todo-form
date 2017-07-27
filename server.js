@@ -24,7 +24,8 @@ const todos = {
     { item: 'Complete Password Project' },
     { item: 'Complete Weekly Project' },
     { item: 'Cook Dinner' }
-  ]
+  ],
+  complete: []
 }
 
 app.get('/', (request, response) => {
@@ -34,10 +35,10 @@ app.get('/', (request, response) => {
 app.post('/', (request, response) => {
   request.checkBody('item', 'No Items Added')
   todos.list.push({ item: request.body.item })
+  request.checkBody('submit', 'No Items Selected')
+  todos.complete.push({ item: request.body.item })
   response.render('index', todos)
 })
-
-console.log(todos)
 
 app.listen(3000, () => {
   console.log('Things are Happening')
