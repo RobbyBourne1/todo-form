@@ -34,10 +34,23 @@ app.get('/', (request, response) => {
 
 app.post('/', (request, response) => {
   request.checkBody('item', 'No Items Added')
+  const errors = request.validationErrors()
+
+  // if (errors) {
+  //   // What to do here?
+  // } else {
   todos.list.push({ item: request.body.item })
-  request.checkBody('submit', 'No Items Selected')
-  todos.complete.push({ item: request.body.item })
-  response.render('index', todos)
+
+  response.redirect('/')
+})
+// })
+
+app.post('/complete/:item', (request, response) => {
+  // How can we find the item and move it from `list` to complete
+  todos.complete.push({ item: request.params.item })
+  todos.list = todos.list.filter(todo => todo.item !== request.params.item)
+
+  response.redirect('/')
 })
 
 app.listen(3000, () => {
