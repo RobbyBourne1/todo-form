@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="/style.css">
-    <title></title>
-  </head>
-  <body>
-    <ul>
-      <form action="/" method="post">
-        <div>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/style.css">
+  <title></title>
+</head>
+
+<body>
+  <ul>
+    <form action="/" method="post">
+      <div>
         <p>{{listName}}</p>
-        <input class="addItem" type="text" name="item" autofocus= "on" value="" placeholder="Add Item">
-      </form>
-        <ul>
-          {{#list}}
-            <li>
-              <form action="/complete/{{item}}" method="post">
-                <button type="submit">Complete</button>
-                <label>{{item}}</label>
-              </form>
-            </li>
-          {{/list}}
-          <p>Completed Items</p>
-          {{#complete}}
-          <li>
-              <label>{{item}}</label>
-          </li>
-          {{/complete}}
-        </ul>
-      </form>
+        <input class="addItem" type="text" name="item" autofocus="on" value="" placeholder="Add Item">
+    </form>
+    <ul class="incomplete">
+      {{#list}}
+        <li>
+          <form action="/complete/{{item}}" method="post">
+            <button type="submit">Complete</button>
+            <label>{{item}}</label>
+          </form>
+        </li>
+      {{/list}}
     </ul>
-  </body>
+    <p>Completed Items</p>
+    <ul class="complete">
+      {{#complete}}
+        <li>{{item}}</li>
+      {{/complete}}
+    </ul>
+    </form>
+  </ul>
+</body>
+
 </html>
