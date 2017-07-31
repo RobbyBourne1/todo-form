@@ -9,26 +9,26 @@
 
 <body>
   <ul>
-    <form action="/" method="post">
+    <form action="/addTodo" method="post">
       <div>
-        <p>{{listName}}</p>
-        <input class="addItem" type="text" name="item" autofocus="on" value="" placeholder="Add Item">
+        <p>TODO List</p>
+        <input class="addItem" type="text" name="description" autofocus="on" value="" placeholder="Add Item">
     </form>
     <ul class="incomplete">
-      {{#list}}
+      {{#uncompleted}}
         <li>
-          <form action="/complete/{{item}}" method="post">
-            <button type="submit">Complete</button>
-            <label>{{item}}</label>
+          <form action="/complete" method="post">
+            <button type="submit" name="id" value="{{id}}">Complete</button>
+            <label>{{description}}</label>
           </form>
         </li>
-      {{/list}}
+      {{/uncompleted}}
     </ul>
     <p>Completed Items</p>
     <ul class="complete">
-      {{#complete}}
-        <li>{{item}}</li>
-      {{/complete}}
+      {{#completed}}
+        <li>{{description}}</li>
+      {{/completed}}
     </ul>
     </form>
   </ul>
